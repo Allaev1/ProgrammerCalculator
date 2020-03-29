@@ -1,35 +1,9 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-class BinaryNumber
-{
-public:
-
+class Number {
 private:
-
-};
-
-class OctalNumber
-{
-public:
-
-private:
-
-};
-
-class DecimalNumber
-{
-public:
-
-private:
-
-};
-
-class HexadecimalNumber
-{
-public:
-
-private:
-
+	string number;
 };
