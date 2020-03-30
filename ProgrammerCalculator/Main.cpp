@@ -32,7 +32,7 @@ void CheckForDec(string &str)
 	Validator check;
 	do 
 	{
-		cout << "Enter the decimal number: ";
+		cout << "Enter decimal number: ";
 		cin >> str;
 	} while (!check.IsCorrectDec(str));
 }
@@ -42,7 +42,7 @@ void CheckForBinary(string& str)
 	Validator check;
 	do 
 	{
-		cout << "Enter the binary number: ";
+		cout << "Enter binary number: ";
 		cin >> str;
 	} while (!check.IsCorrectBinary(str));
 }
@@ -52,7 +52,7 @@ void CheckForOctal(string& str)
 	Validator check;
 	do 
 	{
-		cout << "Enter the octal number: ";
+		cout << "Enter octal number: ";
 		cin >> str;
 	} while (!check.IsCorrectOctal(str));
 }
@@ -62,7 +62,7 @@ void CheckForHex(string& str)
 	Validator check;
 	do 
 	{ 
-		cout << "Enter the hexadecimal number: ";
+		cout << "Enter hexadecimal number: ";
 		cin >> str;
 		for (auto& c : str) c = toupper(c);
 	} while (!check.IsCorrectHex(str));
