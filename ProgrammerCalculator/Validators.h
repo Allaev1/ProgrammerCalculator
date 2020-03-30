@@ -16,17 +16,17 @@ public:
 	{
 		for (int i = 0; i < stringForCheck.length(); ++i) 
 		{
-			int dismatch = 0;
+			int dismatch = 0; // number of times when symbols didn't match
 
 			for (int k = 0; k < symbolsForBinary.length(); ++k) 
 			{
 				if (stringForCheck[i] == symbolsForBinary[k])
-					break;
+					break; // if the symbols match, go to the next symbol in number
 				else
 				{
 					dismatch++;
 
-					if (dismatch == 2) 
+					if (dismatch == 2) // if the symbol in a number didn't match with all symbols in binary, then return false
 					{
 						cout << "There is invalid symbol found in position " << i << endl;
 						return false;
@@ -38,6 +38,7 @@ public:
 		return true;
 	}
 
+	// Same algorithm used below for the rest methods with some little changes. For example, dismatch depends on the base system
 	bool IsCorrectHex(string stringForCheck) 
 	{
 		for (int i = 0; i < stringForCheck.length(); ++i) 
