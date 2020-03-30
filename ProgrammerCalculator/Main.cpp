@@ -5,53 +5,63 @@
 
 using namespace std;
 
-void showMenu() {
-	cout << "\n1. Convert from decimal to binary" << endl;
+void ShowMenu() 
+{
+	cout << endl << endl;
+
+	cout << "Please, enter command symbol:" << endl << endl;
+
+	cout << "1. Convert from decimal to binary" << endl;
 	cout << "2. Convert from decimal to octal" << endl;
-	cout << "3. Convert from decimal to hexadecimal" << endl;
+	cout << "3. Convert from decimal to hexadecimal" << endl << endl;
 	cout << "4. Convert from binary to decimal" << endl;
 	cout << "5. Convert from binary to octal" << endl;
-	cout << "6. Convert from binary to hexadecimal" << endl;
+	cout << "6. Convert from binary to hexadecimal" << endl << endl;
 	cout << "7. Convert from octal to binary" << endl;
 	cout << "8. Convert from octal to decimal" << endl;
-	cout << "9. Convert from octal to hexadecimal" << endl;
+	cout << "9. Convert from octal to hexadecimal" << endl << endl;
 	cout << "0. Convert from hexadecimal to binary" << endl;
 	cout << "a. Convert from hexadecimal to decimal" << endl;
-	cout << "b. Convert from hexadecimal to octal" << endl;
+	cout << "b. Convert from hexadecimal to octal" << endl << endl;
 	cout << "x. Exit the program" << endl;
 
-	cout << "Welcome to our programming calculator.\nYou can see the options above and their corresponding symbols.";
-	cout << "These are the commands to select and for your convinience you can type uppercase or lowercase" << endl;
-	cout << "Please, type in the appropriate command: \n";
 }
 
-void checkForDec(string &str) {
+void CheckForDec(string &str) 
+{
 	Validator check;
-	do {
+	do 
+	{
 		cout << "Enter the decimal number: ";
 		cin >> str;
 	} while (!check.IsCorrectDec(str));
 }
 
-void checkForBinary(string& str) {
+void CheckForBinary(string& str) 
+{
 	Validator check;
-	do {
+	do 
+	{
 		cout << "Enter the binary number: ";
 		cin >> str;
 	} while (!check.IsCorrectBinary(str));
 }
 
-void checkForOctal(string& str) {
+void CheckForOctal(string& str) 
+{
 	Validator check;
-	do {
+	do 
+	{
 		cout << "Enter the octal number: ";
 		cin >> str;
 	} while (!check.IsCorrectOctal(str));
 }
 
-void checkForHex(string& str) {
+void CheckForHex(string& str)
+{
 	Validator check;
-	do { 
+	do 
+	{ 
 		cout << "Enter the hexadecimal number: ";
 		cin >> str;
 		for (auto& c : str) c = toupper(c);
@@ -64,105 +74,117 @@ void RunProgram()
 	string number;
 	Converter convert;
 
-	do {
-
-		showMenu();
+	do
+	{
+		ShowMenu();
 		cin >> selection;
 
-	if (selection == '1') {
+	if (selection == '1') 
+	{
 		string binary;
-		checkForDec(number);
+		CheckForDec(number);
 		cout << "Converting process..." << endl;
 		binary = convert.ConvertFromDecimalToBinary(number);
-		cout << "Converting process has finished" << endl;
+		cout << "Converting process has finished" << endl << endl;
 		cout << "The binary representation is " << binary << endl;
 	}
-	else if (selection == '2') {
+	else if (selection == '2') 
+	{
 		string octal;
-		checkForDec(number);
+		CheckForDec(number);
 		cout << "Converting process..." << endl;
 		octal = convert.ConvertFromDecimalToOctal(number);
-		cout << "Converting process has finished" << endl;
+		cout << "Converting process has finished" << endl << endl;
 		cout << "The octal representation is " << octal << endl;
 	}
-	else if (selection == '3') {
+	else if (selection == '3') 
+	{
 		string hex;
-		checkForDec(number);
+		CheckForDec(number);
 		cout << "Converting process..." << endl;
 		hex = convert.ConvertFromDecimalToHexadecimal(number);
-		cout << "Converting process has finished" << endl;
+		cout << "Converting process has finished" << endl << endl;
 		cout << "The hexadecimal representation is " << hex << endl;
 	}
-	else if (selection == '4') {
+	else if (selection == '4') 
+	{
 		string dec;
-		checkForBinary(number);
+		CheckForBinary(number);
 		cout << "Converting process..." << endl;
 		dec = convert.ConvertFromBinaryToDecimal(number);
 		cout << "Converting process has finished" << endl;
 		cout << "The decimal representation is " << dec << endl;
 	}
-	else if (selection == '5') {
+	else if (selection == '5')
+	{
 		string octal;
-		checkForBinary(number);
+		CheckForBinary(number);
 		cout << "Converting process..." << endl;
 		octal = convert.ConvertFromBinaryToOctal(number);
-		cout << "Converting process has finished" << endl;
+		cout << "Converting process has finished" << endl << endl;
 		cout << "The octal representation is " << octal << endl;
 	}
-	else if (selection == '6') {
+	else if (selection == '6') 
+	{
 		string hex;
-		checkForBinary(number);
+		CheckForBinary(number);
 		cout << "Converting process..." << endl;
 		hex = convert.ConvertFromBinaryToHexadecimal(number);
-		cout << "Converting process has finished" << endl;
+		cout << "Converting process has finished" << endl << endl;
 		cout << "The hexadecimal representation is " << hex << 	endl;
 	}
-	else if (selection == '7') {
+	else if (selection == '7')
+	{
 		string binary;
-		checkForOctal(number);
+		CheckForOctal(number);
 		cout << "Converting process..." << endl;
 		binary = convert.ConvertFromOctalToBinary(number);
-		cout << "Converting process has finished" << endl;
+		cout << "Converting process has finished" << endl << endl;
 		cout << "The binary representation is " << binary << endl;
 	}
-	else if (selection == '8') {
+	else if (selection == '8')
+	{
 		string decimal;
-		checkForOctal(number);
+		CheckForOctal(number);
 		cout << "Converting process..." << endl;
 		decimal = convert.ConvertFromOctalToDecimal(number);
-		cout << "Converting process has finished" << endl;
+		cout << "Converting process has finished" << endl << endl;
 		cout << "The decimal representation is " << decimal << endl;
 	}
-	else if (selection == '9') {
+	else if (selection == '9')
+	{
 		string hex;
-		checkForOctal(number);
+		CheckForOctal(number);
 		cout << "Converting process..." << endl;
 		hex = convert.ConvertFromOctalToHexadecimal(number);
-		cout << "Converting process has finished" << endl;
+		cout << "Converting process has finished" << endl << endl;
 		cout << "The hexadecimal representation is " << hex << endl;
 	}
-	else if (selection == '0') {
+	else if (selection == '0')
+	{
 		string binary;
-		checkForHex(number);
+		CheckForHex(number);
 		cout << "Converting process..." << endl;
 		binary = convert.ConvertFromHexadecimalToBinary(number);
-		cout << "Converting process has finished" << endl;
+		cout << "Converting process has finished" << endl << endl;
 		cout << "The binary representation is " << binary << endl;
 	}
-	else if (selection == 'a' || selection == 'A') {
+	else if (selection == 'a' || selection == 'A') 
+	{
 		string decimal;
-		checkForHex(number);
+		CheckForHex(number);
 		cout << "Converting process..." << endl;
 		decimal = convert.ConvertFromHexadecimalToDecimal(number);
-		cout << "Converting process has finished" << endl;
+		cout << "Converting process has finished" << endl << endl;
 		cout << "The decimal representation is " << decimal << endl;
 	}
-	else if (selection == 'b' || selection == 'C') {
+	else if (selection == 'b' || selection == 'C') 
+	{
 		string octal;
-		checkForHex(number);
+		CheckForHex(number);
 		cout << "Converting process..." << endl;
 		octal = convert.ConvertFromHexadecimalToOctal(number);
-		cout << "Converting process has finished" << endl;
+		cout << "Converting process has finished" << endl << endl;
 		cout << "The octal representation is " << octal << endl;
 	}
 	else if (selection == 'x' || selection == 'X')
@@ -175,6 +197,9 @@ void RunProgram()
 
 int main()
 {
+	cout << "Welcome to our programming calculator.\nYou can see the options above and their corresponding symbols.";
+	cout << "There are commands to select and for your convenience you can type uppercase or lowercase" << endl;
+
 	RunProgram();
 
 	system("pause");
