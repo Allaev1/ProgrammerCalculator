@@ -13,6 +13,10 @@ public:
 	string ConvertFromOctalToBinary(string octalToConvert);
 	string ConvertFromOctalToDecimal(string octalToConvert);
 	string ConvertFromOctalToHexademical(string octalToConvert);
+
+	string ConvertFromDecimalToBinary(string decimalToConvert);
+	string ConvertFromDecimalToOctal(string decimalToConvert);
+	string ConvertFromDecimalToHexadecimal(string decimalToConvert);
 };
 
 #pragma region Binary converters
@@ -170,5 +174,69 @@ string Converter::ConvertFromOctalToHexademical(string octalToConvert)
 	return hexademicalNumber;
 }
 #pragma endregion
+
+#pragma region Decimla converters
+string Converter::ConvertFromDecimalToBinary(string decimalToConvert)
+{
+	string binary;
+
+	int decimalNumber = stoi(decimalToConvert);
+
+	for (int i = 0; decimalNumber > 0; i++)
+	{
+		binary = binary + to_string(decimalNumber % 2);
+		decimalNumber = decimalNumber / 2;
+	}
+
+	reverse(binary.begin(), binary.end());
+
+	return binary;
+}
+
+string Converter::ConvertFromDecimalToOctal(string decimalToConvert)
+{
+	string octal;
+
+	int decimalNumber = stoi(decimalToConvert);
+
+	for (int i = 0; decimalNumber > 0; i++)
+	{
+		octal = octal + to_string(decimalNumber % 8);
+		decimalNumber = decimalNumber / 8;
+	}
+
+	//Since for construction fills octal number in reverse way. We must to reserve octal number 
+	reverse(octal.begin(), octal.end());
+
+	return octal;
+}
+
+string Converter::ConvertFromDecimalToHexadecimal(string decimalToConvert)
+{
+	string hexadecimal;
+
+	int decimalNumber = stoi(decimalToConvert);
+	int remainder=0;
+
+	for (int i = 0; decimalNumber > 0; i++)
+	{
+		remainder = decimalNumber % 16;
+		decimalNumber = decimalNumber / 16;
+
+		if (remainder > 9)
+		{
+			char letterToAdd = remainder + 55;
+			hexadecimal = hexadecimal + letterToAdd;
+		}
+		else
+			hexadecimal = hexadecimal + to_string(remainder);
+	}
+
+	reverse(hexadecimal.begin(), hexadecimal.end());
+
+	return hexadecimal;
+}
+#pragma endregion
+
 
 
