@@ -17,6 +17,10 @@ public:
 	string ConvertFromDecimalToBinary(string decimalToConvert);
 	string ConvertFromDecimalToOctal(string decimalToConvert);
 	string ConvertFromDecimalToHexadecimal(string decimalToConvert);
+
+	string ConvertFromHexadecimalToBinary(string hexadecimalToConvert);
+	string ConvertFromHexadecimalToOctal(string hexadecimalToConvert);
+	string ConvertFromHexadecimalToDecimal(string hexadecimalToConvert);
 };
 
 #pragma region Binary converters
@@ -238,5 +242,60 @@ string Converter::ConvertFromDecimalToHexadecimal(string decimalToConvert)
 }
 #pragma endregion
 
+#pragma region Hexadecimal converters
+string Converter::ConvertFromHexadecimalToDecimal(string hexadecimalToConvert)
+{
+	string decimal;
+	int decimalNumber = 0;
 
+	//reverse in order to start take numbers from the end
+	reverse(hexadecimalToConvert.begin(), hexadecimalToConvert.end());
 
+	for (int i = 0; i < hexadecimalToConvert.length(); i++)
+	{
+		int symbol = hexadecimalToConvert[i];
+		int temp = 0;
+
+		//bigger or equal to 65 since letters that can be in hexadecimal is A,B,C,D,E and F which in integer represents from 65 to 71
+		if (symbol >= 65)
+			temp = symbol - 55;
+		else
+			temp = stoi(hexadecimalToConvert.substr(i, 1));
+
+		decimalNumber += temp * pow(16, i);
+	}
+
+	decimal = to_string(decimalNumber);
+
+	return decimal;
+}
+
+string Converter::ConvertFromHexadecimalToBinary(string hexadecimalToConvert)
+{
+	string binary;
+
+	//First we convert hexadecimal to decimal
+	string decimal = ConvertFromHexadecimalToDecimal(hexadecimalToConvert);
+
+	//Second we convert decimal from the first step to binary
+	binary = ConvertFromDecimalToBinary(decimal);
+
+	return binary;
+}
+
+string Converter::ConvertFromHexadecimalToOctal(string hexadecimalToConvert)
+{
+	string octal;
+
+	//First convert from hexadecimal to decimal
+	string decimal = ConvertFromHexadecimalToDecimal(hexadecimalToConvert);
+
+	//Second convert from decimal to binary 
+	string binary = ConvertFromDecimalToBinary(decimal);
+
+	//Third convert from binary to octal
+	octal = ConvertFromBinaryToOctal(binary);
+
+	return octal;
+}
+#pragma endregion
