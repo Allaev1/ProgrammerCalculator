@@ -175,7 +175,7 @@ string Converter::ConvertFromOctalToHexademical(string octalToConvert)
 }
 #pragma endregion
 
-#pragma region Decimla converters
+#pragma region Decimal converters
 string Converter::ConvertFromDecimalToBinary(string decimalToConvert)
 {
 	string binary;
