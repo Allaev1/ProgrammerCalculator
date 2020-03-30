@@ -34,7 +34,7 @@ string Converter::ConvertFromBinaryToOctal(string binaryToConvert)
 	//from the end.
 	while (binaryNumber != 0)
 	{
-		int triad = binaryNumber % 1000;//last three bits from the end of the triad
+		int triad = binaryNumber % 1000;//last three bits from the end of the number
 		int result = 0;
 
 		for (int i = 0; i < 3; i++)
