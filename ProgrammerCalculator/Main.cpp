@@ -197,7 +197,7 @@ void RunProgram()
 
 int main()
 {
-	cout << "Welcome to our programming calculator.\nYou can see the options above and their corresponding symbols.";
+	cout << "Welcome to our programming calculator.\nYou can see the options below and their corresponding symbols.";
 	cout << "There are commands to select and for your convenience you can type uppercase or lowercase" << endl;
 
 	RunProgram();
