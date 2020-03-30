@@ -28,7 +28,7 @@ public:
 
 					if (dismatch == 2) // if the symbol in a number didn't match with all symbols in binary, then return false
 					{
-						cout << "There is invalid symbol found in position " << i << endl;
+						cout << "There is invalid symbol found: " << stringForCheck[i] << endl;
 						return false;
 					}
 				}
@@ -55,7 +55,7 @@ public:
 
 					if (dismatch == 16) 
 					{
-						cout << "There is invalid symbol found in position " << i << endl;
+						cout << "There is invalid symbol found: " << stringForCheck[i] << endl;
 						return false;
 					}
 				}
@@ -81,7 +81,7 @@ public:
 
 					if (dismatch == 10) 
 					{
-						cout << "There is invalid symbol found in position " << i << endl;
+						cout << "There is invalid symbol found: " << stringForCheck[i] << endl;
 						return false;
 					}
 				}
@@ -107,7 +107,7 @@ public:
 
 					if (dismatch == 8) 
 					{
-						cout << "There is invalid symbol found in position " << i << endl;
+						cout << "There is invalid symbol found: " << stringForCheck[i] << endl;
 						return false;
 					}
 				}
