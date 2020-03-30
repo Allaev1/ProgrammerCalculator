@@ -51,9 +51,10 @@ void checkForOctal(string& str) {
 
 void checkForHex(string& str) {
 	Validator check;
-	do {
+	do { 
 		cout << "Enter the hexadecimal number: ";
 		cin >> str;
+		for (auto& c : str) c = toupper(c);
 	} while (!check.IsCorrectHex(str));
 }
 
@@ -114,7 +115,7 @@ void RunProgram()
 		cout << "Converting process..." << endl;
 		hex = convert.ConvertFromBinaryToHexadecimal(number);
 		cout << "Converting process has finished" << endl;
-		cout << "The hexadecimal representation is " << hex << endl;
+		cout << "The hexadecimal representation is " << hex << 	endl;
 	}
 	else if (selection == '7') {
 		string binary;
