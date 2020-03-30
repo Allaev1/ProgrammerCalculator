@@ -3,24 +3,31 @@
 
 using namespace std;
 
-class Validator { // validator for numbers
+class Validator // validator for numbers
+{ 
 private:
-	string symbols_for_binary{ "01" };
-	string symbols_for_hex{ "0123456789ABCDEF" };
-	string symbols_for_dec{ "0123456789" };
-	string symbols_for_octal{ "01234567" };
+	string symbolsForBinary{ "01" };
+	string symbolsForHex{ "0123456789ABCDEF" };
+	string symbolsForDec{ "0123456789" };
+	string symbolsForOctal{ "01234567" };
+
 public:
-	bool is_correct_binary(string string_for_check) {
-		for (int i = 0; i < string_for_check.length(); ++i) {
+	bool IsCorrectBinary(string stringForCheck) 
+	{
+		for (int i = 0; i < stringForCheck.length(); ++i) 
+		{
 			int dismatch = 0;
 
-			for (int k = 0; k < symbols_for_binary.length(); ++k) {
-				if (string_for_check[i] == symbols_for_binary[k])
+			for (int k = 0; k < symbolsForBinary.length(); ++k) 
+			{
+				if (stringForCheck[i] == symbolsForBinary[k])
 					break;
-				else {
+				else
+				{
 					dismatch++;
 
-					if (dismatch == 2) {
+					if (dismatch == 2) 
+					{
 						cout << "There is invalid symbol found in position " << i << endl;
 						return false;
 					}
@@ -31,17 +38,22 @@ public:
 		return true;
 	}
 
-	bool is_correct_hex(string string_for_check) {
-		for (int i = 0; i < string_for_check.length(); ++i) {
+	bool IsCorrectHex(string stringForCheck) 
+	{
+		for (int i = 0; i < stringForCheck.length(); ++i) 
+		{
 			int dismatch = 0;
 
-			for (int k = 0; k < symbols_for_hex.length(); ++k) {
-				if (string_for_check[i] == symbols_for_hex[k])
+			for (int k = 0; k < symbolsForHex.length(); ++k) 
+			{
+				if (stringForCheck[i] == symbolsForHex[k])
 					break;
-				else {
+				else 
+				{
 					dismatch++;
 
-					if (dismatch == 16) {
+					if (dismatch == 16) 
+					{
 						cout << "There is invalid symbol found in position " << i << endl;
 						return false;
 					}
@@ -52,17 +64,22 @@ public:
 		return true;
 	}
 
-	bool is_correct_dec(string string_for_check) {
-		for (int i = 0; i < string_for_check.length(); ++i) {
+	bool IsCorrectDec(string stringForCheck) 
+	{
+		for (int i = 0; i < stringForCheck.length(); ++i) 
+		{
 			int dismatch = 0;
 
-			for (int k = 0; k < symbols_for_dec.length(); ++k) {
-				if (string_for_check[i] == symbols_for_dec[k])
+			for (int k = 0; k < symbolsForDec.length(); ++k) 
+			{
+				if (stringForCheck[i] == symbolsForDec[k])
 					break;
-				else {
+				else 
+				{
 					dismatch++;
 
-					if (dismatch == 10) {
+					if (dismatch == 10) 
+					{
 						cout << "There is invalid symbol found in position " << i << endl;
 						return false;
 					}
@@ -73,17 +90,22 @@ public:
 		return true;
 	}
 
-	bool is_correct_octal(string string_for_check) {
-		for (int i = 0; i < string_for_check.length(); ++i) {
+	bool IsCorrectOctal(string stringForCheck) 
+	{
+		for (int i = 0; i < stringForCheck.length(); ++i) 
+		{
 			int dismatch = 0;
 
-			for (int k = 0; k < symbols_for_octal.length(); ++k) {
-				if (string_for_check[i] == symbols_for_octal[k])
+			for (int k = 0; k < symbolsForOctal.length(); ++k) 
+			{
+				if (stringForCheck[i] == symbolsForOctal[k])
 					break;
-				else {
+				else 
+				{
 					dismatch++;
 
-					if (dismatch == 8) {
+					if (dismatch == 8) 
+					{
 						cout << "There is invalid symbol found in position " << i << endl;
 						return false;
 					}

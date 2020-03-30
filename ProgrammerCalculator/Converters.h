@@ -8,11 +8,11 @@ class Converter
 public:
 	string ConvertFromBinaryToOctal(string binaryToConvert);
 	string ConvertFromBinaryToDecimal(string binaryToConvert);
-	string ConvertFromBinaryToHexademical(string binaryToConvert);
+	string ConvertFromBinaryToHexadecimal(string binaryToConvert);
 
 	string ConvertFromOctalToBinary(string octalToConvert);
 	string ConvertFromOctalToDecimal(string octalToConvert);
-	string ConvertFromOctalToHexademical(string octalToConvert);
+	string ConvertFromOctalToHexadecimal(string octalToConvert);
 
 	string ConvertFromDecimalToBinary(string decimalToConvert);
 	string ConvertFromDecimalToOctal(string decimalToConvert);
@@ -26,15 +26,15 @@ public:
 #pragma region Binary converters
 string Converter::ConvertFromBinaryToOctal(string binaryToConvert)
 {
-	int binary = stoi(binaryToConvert);
+	int binaryNumber = stoi(binaryToConvert);
 
-	string octalNumber;
+	string octal;
 
 	//We starting break our binary number by 3 bits 
 	//from the end.
-	while (binary != 0)
+	while (binaryNumber != 0)
 	{
-		int triad = binary % 1000;//last three bits from the end of the triad
+		int triad = binaryNumber % 1000;//last three bits from the end of the triad
 		int result = 0;
 
 		for (int i = 0; i < 3; i++)
@@ -45,45 +45,46 @@ string Converter::ConvertFromBinaryToOctal(string binaryToConvert)
 			triad = triad / 10;
 		}
 
-		binary = binary / 1000;
+		binaryNumber = binaryNumber / 1000;
 
-		octalNumber = octalNumber + to_string(result);
+		octal = octal + to_string(result);
 	}
 
-	reverse(octalNumber.begin(), octalNumber.end());
+	reverse(octal.begin(), octal.end());
 
-	return octalNumber;
+	return octal;
 }
 
 string Converter::ConvertFromBinaryToDecimal(string binaryToConvert)
 {
-	int binary = stoi(binaryToConvert);
+	int binaryNumber = stoi(binaryToConvert);
 	int result = 0;
 	int base = 1;
-	while (binary)
+
+	while (binaryNumber)
 	{
-		int lastDigit = binary % 10;
-		binary = binary / 10;
+		int lastDigit = binaryNumber % 10;
+		binaryNumber = binaryNumber / 10;
 		result += lastDigit * base;
 		base = base * 2;
 	}
 
-	string decimalNumber = to_string(result);
+	string decimal = to_string(result);
 
-	return decimalNumber;
+	return decimal;
 }
 
-string Converter::ConvertFromBinaryToHexademical(string binaryToConvert)
+string Converter::ConvertFromBinaryToHexadecimal(string binaryToConvert)
 {
-	string hexademicalNumber;
+	string hexadecimal;
 
-	int binary = stoi(binaryToConvert);
+	int binaryNumber = stoi(binaryToConvert);
 
 	//We starting break our binary number by 4 bits 
 	//from the end.
-	while (binary != 0)
+	while (binaryNumber != 0)
 	{
-		int tetrad = binary % 10000;//last four bits from the end of the triad
+		int tetrad = binaryNumber % 10000;//last four bits from the end of the triad
 		int result = 0;
 
 		for (int i = 0; i < 4; i++)
@@ -97,75 +98,75 @@ string Converter::ConvertFromBinaryToHexademical(string binaryToConvert)
 		if (result > 9)
 		{
 			char letterToAdd = result + 55;
-			hexademicalNumber = hexademicalNumber + letterToAdd;
+			hexadecimal = hexadecimal + letterToAdd;
 		}
 		else
-			hexademicalNumber = hexademicalNumber + to_string(result);
+			hexadecimal = hexadecimal + to_string(result);
 
-		binary = binary / 10000;
+		binaryNumber = binaryNumber / 10000;
 	}
 
-	reverse(hexademicalNumber.begin(), hexademicalNumber.end());
+	reverse(hexadecimal.begin(), hexadecimal.end());
 
-	return hexademicalNumber;
+	return hexadecimal;
 }
 #pragma endregion
 
 #pragma region Octal converters
 string Converter::ConvertFromOctalToBinary(string octalToConvert)
 {
-	string binaryNumber;
+	string binary;
 
-	int octal = stoi(octalToConvert);
+	int octalNumber = stoi(octalToConvert);
 
-	int decimalNum = 0, binaryNum = 0, count = 0;
+	int decimalNumber = 0, binaryNumber = 0, count = 0;
 
 	//First we convert octal number into decimal number
-	while (octal != 0) 
+	while (octalNumber != 0)
 	{
-		decimalNum += (octal % 10) * pow(8, count);
+		decimalNumber += (octalNumber % 10) * pow(8, count);
 		++count;
-		octal /= 10;
+		octalNumber /= 10;
 	}
 
 	count = 1;
 
 	//Second we convert decimal number from the first step into binary number
-	while (decimalNum != 0) 
+	while (decimalNumber != 0)
 	{
-		binaryNum += (decimalNum % 2) * count;
-		decimalNum /= 2;
+		binaryNumber += (decimalNumber % 2) * count;
+		decimalNumber /= 2;
 		count *= 10;
 	}
 
-	binaryNumber = to_string(binaryNum);
+	binary = to_string(binaryNumber);
 
-	return binaryNumber;
+	return binary;
 }
 
 string Converter::ConvertFromOctalToDecimal(string octalToConvert)
 {
-	string decimalNumber;
+	string decimal;
 
-	int octal = stoi(octalToConvert);
+	int octalNumber = stoi(octalToConvert);
 
-	int decimalNum = 0, count = 0;
+	int decimalNumber = 0, count = 0;
 
-	while (octal != 0) 
+	while (octalNumber != 0)
 	{
-		decimalNum += (octal % 10) * pow(8, count);
+		decimalNumber += (octalNumber % 10) * pow(8, count);
 		++count;
-		octal /= 10;
+		octalNumber /= 10;
 	}
 
-	decimalNumber = to_string(decimalNum);
+	decimal = to_string(decimalNumber);
 
-	return decimalNumber;
+	return decimal;
 }
 
-string Converter::ConvertFromOctalToHexademical(string octalToConvert)
+string Converter::ConvertFromOctalToHexadecimal(string octalToConvert)
 {
-	string hexademicalNumber;
+	string hexademical;
 
 	string binary;
 
@@ -173,9 +174,9 @@ string Converter::ConvertFromOctalToHexademical(string octalToConvert)
 	binary = ConvertFromOctalToBinary(octalToConvert);
 
 	//Second convert binary to hexademical
-	hexademicalNumber = ConvertFromBinaryToHexademical(binary);
+	hexademical = ConvertFromBinaryToHexadecimal(binary);
 
-	return hexademicalNumber;
+	return hexademical;
 }
 #pragma endregion
 
