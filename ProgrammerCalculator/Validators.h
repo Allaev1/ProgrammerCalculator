@@ -15,9 +15,8 @@ private:
 
 	void ShowMarkedErrors(string sourceString, vector<char> wrongSymbols)
 	{
+		//Read this(https://stackoverflow.com/questions/4053837/colorizing-text-in-the-console-with-c) to see how change color of text of console app
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-
-		SetConsoleTextAttribute(hConsole, 7);
 
 		cout << endl << "Error input!" << endl;
 
@@ -28,9 +27,9 @@ private:
 			for (int a = 0; a < wrongSymbols.size(); a++)
 				if (sourceString[i] == wrongSymbols[a])
 				{
-					SetConsoleTextAttribute(hConsole, 2);
+					SetConsoleTextAttribute(hConsole, 2);//Second parameter is code of color. Look code of color here http://cppqa.blogspot.com/2013/11/colour-coding-in-c-first-time-i-saw.html
 					cout << sourceString[i];
-					SetConsoleTextAttribute(hConsole, 7);
+					SetConsoleTextAttribute(hConsole, 7);//Second parameter is code of color. Look code of color here http://cppqa.blogspot.com/2013/11/colour-coding-in-c-first-time-i-saw.html
 					i++;
 				}
 
@@ -46,7 +45,7 @@ private:
 public:
 	bool IsCorrectBinary(string stringForCheck)
 	{
-		vector<char> wrongSymbols;
+		vector<char> wrongSymbols;//Read this(https://stackoverflow.com/questions/755835/how-to-add-element-to-c-array)
 		bool isCorrectBinary = true;//Flag that shows that input binary is correct or no
 
 		for (int i = 0; i < stringForCheck.length(); ++i)
