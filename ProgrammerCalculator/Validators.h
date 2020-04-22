@@ -42,30 +42,32 @@ private:
 		cout << "Please fix error(s)." << endl;
 	}
 
+	bool FindErrors(string stringForCheck, vector<char>& wrongSymbols,string availableSymbols)
+	{
+		bool isCorrectString = true;
+
+		for (int i = 0; i < stringForCheck.length(); ++i)
+		{
+			for (int k = 0; k < symbolsForBinary.length(); ++k)
+			{
+				//Read this to see how this statement work(https://stackoverflow.com/questions/2340281/check-if-a-string-contains-a-string-in-c)
+				if (availableSymbols.find(stringForCheck[i]) == string::npos)//string::npos is constant with value -1. Usually uses to show that it is not any matches. Read this(https://stackoverflow.com/questions/3827926/what-does-stringnpos-mean-in-this-code)
+				{
+					wrongSymbols.push_back(stringForCheck[i]);
+					isCorrectString = false;
+				}
+			}
+		}
+
+		return isCorrectString;
+	}
 public:
 	bool IsCorrectBinary(string stringForCheck)
 	{
 		vector<char> wrongSymbols;//Read this(https://stackoverflow.com/questions/755835/how-to-add-element-to-c-array)
 		bool isCorrectBinary = true;//Flag that shows that input binary is correct or no
 
-		for (int i = 0; i < stringForCheck.length(); ++i)
-		{
-			int dismatch = 0; // number of times when symbols didn't match
-
-			for (int k = 0; k < symbolsForBinary.length(); ++k)
-			{
-				if (stringForCheck[i] != symbolsForBinary[k])
-				{
-					dismatch++;
-
-					if (dismatch == 2) // if the symbol in a number didn't match with all symbols in binary, then return false
-					{
-						wrongSymbols.push_back(stringForCheck[i]);
-						isCorrectBinary = false;
-					}
-				}
-			}
-		}
+		isCorrectBinary = FindErrors(stringForCheck, wrongSymbols, symbolsForBinary);
 
 		if (!isCorrectBinary)
 		{
@@ -77,30 +79,12 @@ public:
 		return true;
 	}
 
-	// Same algorithm used below for the rest methods with some little changes. For example, dismatch depends on the base system
 	bool IsCorrectHex(string stringForCheck)
 	{
 		vector <char> wrongSymbols;
 		bool isCorrectHex = true;
 
-		for (int i = 0; i < stringForCheck.length(); ++i)
-		{
-			int dismatch = 0;
-
-			for (int k = 0; k < symbolsForHex.length(); ++k)
-			{
-				if (stringForCheck[i] != symbolsForHex[k])
-				{
-					dismatch++;
-
-					if (dismatch == 16)
-					{
-						wrongSymbols.push_back(stringForCheck[i]);
-						isCorrectHex = false;
-					}
-				}
-			}
-		}
+		isCorrectHex = FindErrors(stringForCheck, wrongSymbols, symbolsForHex);
 
 		if (!isCorrectHex)
 		{
@@ -117,24 +101,7 @@ public:
 		vector <char> wrongSymbols;
 		bool isCorrectDec = true;
 
-		for (int i = 0; i < stringForCheck.length(); ++i)
-		{
-			int dismatch = 0;
-
-			for (int k = 0; k < symbolsForDec.length(); ++k)
-			{
-				if (stringForCheck[i] != symbolsForDec[k])
-				{
-					dismatch++;
-
-					if (dismatch == 10)
-					{
-						wrongSymbols.push_back(stringForCheck[i]);
-						isCorrectDec = false;
-					}
-				}
-			}
-		}
+		isCorrectDec = FindErrors(stringForCheck, wrongSymbols, symbolsForDec);
 
 		if (!isCorrectDec)
 		{
@@ -151,24 +118,7 @@ public:
 		vector <char> wrongSymbols;
 		bool isCorrectOctal = true;
 
-		for (int i = 0; i < stringForCheck.length(); ++i)
-		{
-			int dismatch = 0;
-
-			for (int k = 0; k < symbolsForOctal.length(); ++k)
-			{
-				if (stringForCheck[i] != symbolsForOctal[k])
-				{
-					dismatch++;
-
-					if (dismatch == 8)
-					{
-						wrongSymbols.push_back(stringForCheck[i]);
-						isCorrectOctal = false;
-					}
-				}
-			}
-		}
+		isCorrectOctal = FindErrors(stringForCheck, wrongSymbols, symbolsForOctal);
 
 		if (!isCorrectOctal)
 		{
