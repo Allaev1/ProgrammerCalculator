@@ -80,25 +80,33 @@ public:
 	// Same algorithm used below for the rest methods with some little changes. For example, dismatch depends on the base system
 	bool IsCorrectHex(string stringForCheck)
 	{
+		vector <char> wrongSymbols;
+		bool isCorrectHex = true;
+
 		for (int i = 0; i < stringForCheck.length(); ++i)
 		{
 			int dismatch = 0;
 
 			for (int k = 0; k < symbolsForHex.length(); ++k)
 			{
-				if (stringForCheck[i] == symbolsForHex[k])
-					break;
-				else
+				if (stringForCheck[i] != symbolsForHex[k])
 				{
 					dismatch++;
 
 					if (dismatch == 16)
 					{
-						cout << "There is invalid symbol found: " << stringForCheck[i] << endl;
-						return false;
+						wrongSymbols.push_back(stringForCheck[i]);
+						isCorrectHex = false;
 					}
 				}
 			}
+		}
+
+		if (!isCorrectHex)
+		{
+			ShowMarkedErrors(stringForCheck, wrongSymbols);
+
+			return false;
 		}
 
 		return true;
@@ -106,25 +114,33 @@ public:
 
 	bool IsCorrectDec(string stringForCheck)
 	{
+		vector <char> wrongSymbols;
+		bool isCorrectDec = true;
+
 		for (int i = 0; i < stringForCheck.length(); ++i)
 		{
 			int dismatch = 0;
 
 			for (int k = 0; k < symbolsForDec.length(); ++k)
 			{
-				if (stringForCheck[i] == symbolsForDec[k])
-					break;
-				else
+				if (stringForCheck[i] != symbolsForDec[k])
 				{
 					dismatch++;
 
 					if (dismatch == 10)
 					{
-						cout << "There is invalid symbol found: " << stringForCheck[i] << endl;
-						return false;
+						wrongSymbols.push_back(stringForCheck[i]);
+						isCorrectDec = false;
 					}
 				}
 			}
+		}
+
+		if (!isCorrectDec)
+		{
+			ShowMarkedErrors(stringForCheck, wrongSymbols);
+
+			return false;
 		}
 
 		return true;
@@ -132,25 +148,33 @@ public:
 
 	bool IsCorrectOctal(string stringForCheck)
 	{
+		vector <char> wrongSymbols;
+		bool isCorrectOctal = true;
+
 		for (int i = 0; i < stringForCheck.length(); ++i)
 		{
 			int dismatch = 0;
 
 			for (int k = 0; k < symbolsForOctal.length(); ++k)
 			{
-				if (stringForCheck[i] == symbolsForOctal[k])
-					break;
-				else
+				if (stringForCheck[i] != symbolsForOctal[k])
 				{
 					dismatch++;
 
 					if (dismatch == 8)
 					{
-						cout << "There is invalid symbol found: " << stringForCheck[i] << endl;
-						return false;
+						wrongSymbols.push_back(stringForCheck[i]);
+						isCorrectOctal = false;
 					}
 				}
 			}
+		}
+
+		if (!isCorrectOctal)
+		{
+			ShowMarkedErrors(stringForCheck, wrongSymbols);
+
+			return false;
 		}
 
 		return true;
